@@ -1,0 +1,101 @@
+debug: false
+spring:
+  application:
+    name: project-processor
+#  webflux:
+#    base-path: /project-processor
+server:
+  port: 82
+
+simple:
+  processor:
+    size: 2
+
+tasks:
+  git: "com.sk.projectprocessor.task.GitTask"
+
+parent:
+  localDir: "C:/sandeep/daily/tmp"
+  runId: "1"
+  token: ""
+  source: "master"
+  work: "feat/temp"
+  target: "master"
+  repoUrl: "https://innersource.soprasteria.com"
+  baseUrl: "sbs-cloud/sbcp/core-security/signature"
+  tasks:
+    - name: "git"
+      order: 1
+  projects:
+    - name: "commons-signature"
+      tasks:
+        - name: "git"
+          order: 1
+      ignore: false
+    - name: "service-signature-manager"
+      tasks:
+        - name: "git"
+          order: 1
+      dependencies:
+        - "commons-signature"
+      ignore: false
+    - name: "signatories-manager-stdapi"
+      tasks:
+        - name: "git"
+          order: 1
+      dependencies:
+        - "commons-signature"
+        - "service-signature-manager"
+      ignore: false
+    - name: "signature-engagement-component-stdapi"
+      tasks:
+        - name: "git"
+          order: 1
+      dependencies:
+        - "commons-signature"
+        - "service-signature-manager"
+      ignore: false
+    - name: "sca-decision-stdapi"
+      tasks:
+        - name: "git"
+          order: 1
+      dependencies:
+        - "commons-signature"
+        - "service-signature-manager"
+      ignore: false
+    - name: "service-signature-broker"
+      tasks:
+        - name: "git"
+          order: 1
+      dependencies:
+        - "commons-signature"
+        - "service-signature-manager"
+      ignore: false
+    - name: "service-notification-demo"
+      tasks:
+        - name: "git"
+          order: 1
+      dependencies:
+        - "service-signature-manager"
+      ignore: false
+    - name: "service-sca-decision-demo"
+      tasks:
+        - name: "git"
+          order: 1
+      dependencies:
+        - "sca-decision-stdapi"
+      ignore: false
+    - name: "service-signatories-manager-demo"
+      tasks:
+        - name: "git"
+          order: 1
+      dependencies:
+        - "signatories-manager-stdapi"
+      ignore: false
+    - name: "signature-engagement-component-demo"
+      tasks:
+        - name: "git"
+          order: 1
+      dependencies:
+        - "signature-engagement-component-stdapi"
+      ignore: false

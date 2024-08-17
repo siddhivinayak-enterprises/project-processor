@@ -1,0 +1,50 @@
+body {
+    font-family: sans-serif;
+}
+
+.title {
+    text-align: center;
+}
+
+.action {
+    margin: 5px;
+}
+
+.data {
+    margin: 5px;
+}
+
+.col_1 {
+    width: 15%;
+}
+
+.col_2 {
+    width: 15%;
+}
+
+.col_3 {
+    width: 30%;
+    vertical-align: top;
+}
+
+.col_4 {
+    width: 30%;
+    vertical-align: top;
+}
+
+.col_5 {
+    width: 5%;
+    text-align: center;
+}
+
+.task_box {
+    margin-left: 17px;
+}
+
+.show_button {
+    display: block;
+}
+
+.hide_button {
+    display: none;
+}
